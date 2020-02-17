@@ -1,0 +1,766 @@
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+
+
+/* Table of contents
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“
+- Basic Utilities
+- Grid
+- Base Styles
+- Typography
+- Links
+- Buttons
+- Forms
+- Lists
+- Code
+- Tables
+- Spacing
+- Utilities
+- Clearing
+- Media Queries
+*/
+
+/* Utilities
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+
+.bordered,
+.shadowed,
+.rounded {
+    border-radius: 4px;
+}
+
+.bordered {
+    border: 1px solid #E1E1E1;
+}
+
+.shadowed {
+    box-shadow: 0 2px 4px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.padded {
+    padding: 20px;
+}
+
+.no-bg {
+    background: none;
+}
+
+.bg-blue-100 {
+    background-color: #F6FBFD;
+}
+
+.bg-blue-300 {
+    background-color: #83A6FA;
+}
+
+.bg-blue-500 {
+    background-color: #064EF9;
+}
+
+.bg-blue-700 {
+    background-color: #0445DB;
+}
+
+.bg-blue-900 {
+    background-color: #0038C1;
+}
+
+.blue-500 {
+    color: #064EF9;
+}
+
+.blue-900 {
+    color: #0038C1;
+}
+
+.grey-900,
+a.grey-900 {
+    color: #222;
+}
+
+.grey-700,
+a.grey-700 {
+    color: #575757;
+}
+
+.grey-600,
+a.grey-600 {
+    color: #757575;
+}
+
+.grey-500,
+a.grey-500 {
+    color: #8C8C8C;
+}
+
+.grey-300,
+a.grey-300 {
+    color: #c4c4c4;
+}
+
+/* Flex */
+.flex {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+
+/* Grid
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+.container {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.column,
+.columns {
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* Flex Row */
+.flex-row,
+.flex-row-sm {
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-column,
+.flex-columns {
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.flex-row .flex-column,
+.flex-row .flex-columns {
+    flex-grow: 1;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    justify-content: space-around;
+}
+
+.flex-baseline {
+    align-items: baseline;
+}
+
+.flex-gutter {
+    height: 2rem;
+    width: 2rem;
+    margin: 0;
+}
+
+.flex-filler {
+    flex-grow: 2;
+}
+
+/* Flex row always as columns on: portrait phones */
+@media (max-width: 576px) {
+    .flex-row {
+        flex-direction: column;
+    }
+}
+
+/* Activate grid from Tablet levels */
+@media (min-width: 768px) {
+    .container {
+        width: 80%;
+    }
+
+    .column,
+    .columns {
+        margin-left: 4%;
+    }
+
+    .row-full-width .column,
+    .row-full-width .columns,
+    .column:first-child,
+    .columns:first-child {
+        margin-left: 0;
+    }
+
+    .one.column,
+    .one.columns {
+        width: 4.66666666667%;
+    }
+
+    .two.columns {
+        width: 13.3333333333%;
+    }
+
+    .three.columns {
+        width: 22%;
+    }
+
+    .four.columns {
+        width: 30.6666666667%;
+    }
+
+    .five.columns {
+        width: 39.3333333333%;
+    }
+
+    .six.columns {
+        width: 48%;
+    }
+
+    .seven.columns {
+        width: 56.6666666667%;
+    }
+
+    .eight.columns {
+        width: 65.3333333333%;
+    }
+
+    .nine.columns {
+        width: 74.0%;
+    }
+
+    .ten.columns {
+        width: 82.6666666667%;
+    }
+
+    .eleven.columns {
+        width: 91.3333333333%;
+    }
+
+    .twelve.columns {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .one-third.column {
+        width: 30.6666666667%;
+    }
+
+    .two-thirds.column {
+        width: 65.3333333333%;
+    }
+
+    .one-half.column {
+        width: 48%;
+    }
+
+    .row-full-width .three.columns {
+        width: 25%;
+    }
+
+    .row-full-width .four.columns {
+        width: 33.3333333333%;
+    }
+
+    .row-full-width .six.columns {
+        width: 50%;
+    }
+
+    .row-full-width .eight.columns {
+        width: 66.666666667%;
+    }
+
+    .row-full-width .nine.columns {
+        width: 75%;
+    }
+
+    .row-full-width .twelve.columns {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .four.flex-columns {
+        width: 33.3333333333%;
+    }
+
+    .three.flex-columns {
+        width: 25%;
+    }
+}
+
+
+/* Base Styles
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.5em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: Open Sans, Segoe UI, sans-serif;
+    color: #222;
+}
+
+
+/* Typography
+Used: https://type-scale.com/ for sizes
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+h1,
+.h1 {
+    font-size: 2.074em;
+    line-height: 1.2;
+    letter-spacing: -.03em;
+}
+
+h2,
+.h2 {
+    font-size: 1.728em;
+    line-height: 1.25;
+    letter-spacing: -.02em;
+}
+
+h3,
+.h3 {
+    font-size: 1.44em;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+}
+
+h4,
+.h4 {
+    font-size: 1.2em;
+    line-height: 1.35;
+    letter-spacing: -0.0em;
+}
+
+/* Tablet onwards */
+@media (min-width: 768px) {
+
+    h1,
+    .h1 {
+        font-size: 2.441em;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.953em;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.563em;
+    }
+
+    h4,
+    .h4 {
+        font-size: 1.25em;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.letter-spacing {
+    letter-spacing: .1rem;
+}
+
+
+/* Links
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+a {
+    /*
+    This color is aria complied but on darker side.
+    It looks okay for lines and text but not for fills such as button
+    Thus we are using hsl(220, 96%, 56%) for button: brighter
+  */
+    color: hsl(222, 96%, 50%);
+    text-decoration: none;
+}
+
+a:hover {
+    color: hsl(222, 100%, 48%);
+}
+
+
+/* Buttons
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+.button {
+    display: inline-block;
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.button,
+button:not(.no-style),
+input[type="submit"]:not(.no-style),
+input[type="reset"]:not(.no-style),
+input[type="button"]:not(.no-style) {
+    height: 38px;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 0;
+    box-shadow: 0 2px 4px 0 hsla(0, 0%, 0%, 0.2);
+    color: hsl(222, 96%, 50%);
+    background-color: hsl(0, 0%, 100%);
+}
+
+.button:hover,
+button:not(.no-style):hover,
+input[type="submit"]:not(.no-style):hover,
+input[type="reset"]:not(.no-style):hover,
+input[type="button"]:not(.no-style):hover {
+    transform: translateY(-1px);
+}
+
+.button:active,
+button:not(.no-style):active,
+input[type="submit"]:not(.no-style):active,
+input[type="reset"]:not(.no-style):active,
+input[type="button"]:not(.no-style):active {
+    transform: none;
+    color: #333;
+    outline: 0;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary,
+input[type="submit"].razorpay-payment-button {
+    color: #FFF;
+    background-color: hsl(220, 96%, 56%);
+}
+
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:active,
+button.button-primary:active,
+input[type="submit"].button-primary:active,
+input[type="reset"].button-primary:active,
+input[type="button"].button-primary:active,
+input[type="submit"].razorpay-payment-button:active,
+input[type="submit"].razorpay-payment-button:hover {
+    color: #FFF;
+    background-color: hsl(220, 100%, 49%);
+}
+
+
+/* Forms
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    height: 38px;
+    padding: 6px 10px;
+    /* The 6px vertically centers text on FF, ignored by Webkit */
+    background-color: #fff;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: border .15s ease-in-out, box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+textarea {
+    height: auto;
+    min-height: 65px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 0 0.2rem hsla(222, 96%, 70%, .2);
+    border: 1px solid hsl(222, 96%, 70%);
+    outline: 0;
+}
+
+label,
+legend {
+    display: block;
+    margin-bottom: .5rem;
+    font-weight: 600;
+}
+
+fieldset {
+    padding: 0;
+    border-width: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+}
+
+label>.label-body {
+    display: inline-block;
+    margin-left: .5rem;
+    font-weight: normal;
+}
+
+
+/* Lists
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+ul {
+    list-style: disc;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ol,
+ul {
+    margin-top: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+
+/* Code
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+code {
+    padding: .2rem .5rem;
+    margin: 0 .2rem;
+    font-size: 90%;
+    white-space: nowrap;
+    background: #F1F1F1;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+}
+
+pre>code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+    overflow: scroll;
+}
+
+
+/* Tables
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+th:first-child,
+td:first-child {
+    padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+    padding-right: 0;
+}
+
+
+/* Spacing
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+button,
+.button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    /* keeping equal so that buttons are aligned in center when needed */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+input,
+.input,
+textarea,
+select,
+fieldset {
+    margin-bottom: 1.5rem;
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+    margin-bottom: 2.5rem;
+}
+
+
+/* Utilities
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+.u-full-width {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.u-max-full-width {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.u-pull-right {
+    float: right;
+}
+
+.u-pull-left {
+    float: left;
+}
+
+
+/* Misc
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+hr {
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
+    border-width: 0;
+    border-top: 1px solid #E1E1E1;
+}
+
+
+/* Clearing
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+
+/* Self Clearing Goodness */
+.row-full-width:after,
+.row:after,
+.u-cf {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Media Queries
+â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Extra Small devices: portrait phones - everything columns */
+@media (max-width: 576px) {}
+
+/* Small Devices: landscape phones - everything columns */
+@media (min-width: 576px) {}
+
+/* Medium Devices: Tablets - grid (no border) */
+@media (min-width: 768px) {}
+
+/* Large Devices: desktops - grid and border */
+@media (min-width: 992px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+/* Print CSS */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

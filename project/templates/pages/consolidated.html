@@ -1,0 +1,2493 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  
+  <main>
+    <div class="container" id="content-area">
+      
+
+      
+<div class="flex-row flex-baseline flex-space-between"
+     data-company-id="3365"
+     data-warehouse-id="6599230"
+     
+     data-consolidated="true"
+     id="company-info">
+  <h1 class="no-margin">{{stock_summary.stock_full_name}}</h1>
+
+  <form method="POST" class="no-margin">
+    <input type='hidden' name='csrfmiddlewaretoken' value='tjNpVIw7wXPtSLY9DFWgOfLWgbb0LLrUyPM4Vbe8Lr5O57gullYqQvoQtZnCBkTF' />
+
+    <input type="hidden" name="next" value="/company/TCS/consolidated/">
+
+    
+    <button formaction="/user/company/export/6599230/" class="button-text no-margin">
+      <i class="icon-download"></i>
+      <span class="hide-on-mobile"> Export to Excel</span>
+    </button>
+    
+
+    
+    <button formaction="/api/company/3365/add/"
+            class="button-primary no-margin">
+      <i class="icon-heart"></i>
+      <span class="hide-on-mobile">Add to Watchlist</span>
+    </button>
+    
+  </form>
+</div>
+
+
+<p class="sub bigger" id="company-profile">{{stock_summary.stock_summary}}</p>
+
+<nav id="pseudo-scroll-aid-bar" class="show-on-tablet">
+  <div class="sub-nav">
+    <a href="#top" class="active">{{stock_summary.stock_symbol}}</a>
+    <a href="#chart">Chart</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#peers">Peers</a>
+    <a href="#quarters">Quarters</a>
+    <a href="#profit-loss">Profit &amp; Loss</a>
+    <a href="#balance-sheet">Balance Sheet</a>
+    <a href="#cash-flow">Cash Flow</a>
+    <a href="#ratios">Ratios</a>
+    <a href="#documents">Documents</a>
+  </div>
+</nav>
+
+
+<nav id="fixed-scroll-aid-bar" class="show-on-tablet">
+  <div class="sub-nav">
+    <a href="#top">{{stock_summary.stock_symbol}}</a>
+    <a href="#chart">Chart</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#peers">Peers</a>
+    <a href="#quarters">Quarters</a>
+    <a href="#profit-loss">Profit &amp; Loss</a>
+    <a href="#balance-sheet">Balance Sheet</a>
+    <a href="#cash-flow">Cash Flow</a>
+    <a href="#ratios">Ratios</a>
+    <a href="#documents">Documents</a>
+  </div>
+</nav>
+
+
+<section>
+  
+
+<ul style="margin:0; list-style: none; padding-left: 0; font-size: 120%" class="row-full-width">
+  
+  <li class="four columns">
+    
+      Market Cap:
+      
+      <i class="icon-rupee"></i>
+      
+      <b>{{stock_summary.stock_market_cap}}</b>
+      
+      Cr.
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Current Price:
+      
+      <i class="icon-rupee"></i>
+      
+      <b>{{stock_summary.stock_current_price}}</b>
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      52 weeks High / Low
+      <i class="icon-rupee"></i> <b>{{stock_summary.stock_52_high}}</b> / <b>{{stock_summary.stock_52_low}}</b>
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Book Value:
+      
+      <i class="icon-rupee"></i>
+      
+      <b>{{stock_summary.stock_book_value}}</b>
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Stock P/E:
+      
+      <b>{{stock_summary.stock_pe}}</b>
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Dividend Yield:
+      
+      <b>{{stock_summary.stock_dividend}}</b>
+      
+      %
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      ROCE:
+      
+      <b>{{stock_summary.stock_roce}}</b>
+      
+      %
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      ROE:
+      
+      <b>{{stock_summary.stock_roe}}</b>
+      
+      %
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Sales Growth (3Yrs):
+      
+      <b>{{stock_summary.stock_growth_3}}</b>
+      
+      %
+      
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Listed on
+      <a href="https://www.bseindia.com/stock-share-price/tata-consultancy-services-ltd/"+{{stock_symbol}}+"/532540/" target="_blank" data-tooltip="532540"><b>BSE</b></a> and <a href="https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuote.jsp?symbol="+{{stock_symbol}}+""\" target="_blank" data-tooltip="TCS"><b>NSE</b></a>
+    
+  </li>
+  
+  <li class="four columns">
+    
+      
+      <a href="{{stock_website}}" target="_blank" data-tooltip="{{stock_website}}"><b>Company Website</b></a>
+    
+  </li>
+  
+  <li class="four columns">
+    
+      Face Value:
+      
+      <i class="icon-rupee"></i>
+      
+      <b>{{stock_summary.stock_face_value}}</b>
+      
+    
+  </li>
+  
+</ul>
+<div class="u-cf"></div>
+
+  <!-- <div id="quick-ratios-placeholder"></div>
+
+  <div class="flex-row flex-baseline">
+    <label for="quick-ratio-search" style="margin-right: 1rem">Add Quick Ratio</label>
+    
+    <div>
+      <input id="quick-ratio-search" type="text" placeholder="eg. Promoter holding">
+    </div>
+    
+    <a class="button button-text" href="https://www.screener.in/user/quick_ratios/?next=/company/TCS/consolidated/" aria-label="Manage Quick Ratios">
+      <i class="icon-cog"></i>
+    </a>
+  </div> -->
+</section>
+
+<section id="chart" style="margin-bottom: 2.5rem">
+  <div id="chart-menu" class="flex-row">
+    <div class="options">
+      <button type="button" class="button-link" data-set-chart-days="30">1m</button>
+      <button type="button" class="button-link" data-set-chart-days="90">3m</button>
+      <button type="button" class="button-link" data-set-chart-days="180">6m</button>
+      <button type="button" class="button-link active" data-set-chart-days="365">1Yr</button>
+      <button type="button" class="button-link" data-set-chart-days="1095">3Yr</button>
+      <button type="button" class="button-link" data-set-chart-days="1825">5Yr</button>
+      <button type="button" class="button-link" data-set-chart-days="10000">Max</button>
+    </div>
+
+    <div class="flex-filler"></div>
+
+    <div class="options">
+      <button type="button" class="button-link active" data-set-chart-metrics="Price-SMA50-SMA200-Volume">
+        Price
+      </button>
+      <button type="button" class="button-link" data-set-chart-metrics="Price to Earning-EPS">
+        Price to Earning
+      </button>
+    </div>
+  </div>
+  <div id="chart-area">
+    <div id="chart-info" class="invisible">
+      <div id="chart-crosshair"></div>
+      <div id="chart-tooltip">
+        <div class="strong" id="chart-tooltip-title"></div>
+        <div id="chart-tooltip-info"></div>
+        <div id="chart-tooltip-meta" class="grey-500"></div>
+      </div>
+    </div>
+    <div id="canvas-chart-holder"></div>
+  </div>
+</section>
+
+<!-- 15 48 18 -->
+<section id="analysis" style="margin-bottom: 2.5rem">
+  <div class="row row-full-width">
+    <div class="six columns callout success">
+      <div><b>Pros:</b></div>
+      
+      <div>Company is virtually debt free.</div>
+      
+      <div>Company has a good return on equity (ROE) track record: 3 Years ROE 33.13%</div>
+      
+      <div>Company has been maintaining a healthy dividend payout of 35.98%</div>
+      
+    </div>
+    <div class="six columns callout warning">
+      <div><b>Cons:</b></div>
+      
+      <div>Stock is trading at 8.62 times its book value</div>
+      
+    </div>
+  </div>
+  
+</section>
+
+<section id="peers">
+  <h2>
+      Peer Comparison
+      
+          <small class="sub">
+          Sector:
+          <a href="https://www.screener.in/company/compare/00000034/">
+              IT - Software
+          </a>
+          //
+          Industry:
+          <a href="https://www.screener.in/company/compare/00000034/00000027/">
+              Computers - Software - Large
+          </a>
+          </small>
+      
+  </h2>
+
+
+  <div id="peers-table-placeholder">Loading peers table ...</div>
+
+  <div class="flex-row flex-baseline">
+    <label for="search-peer-comparison" style="padding-right: 1rem">Detailed Comparison with:</label>
+    <div>
+      <input type="text" id="search-peer-comparison" placeholder="eg. Infosys">
+    </div>
+  </div>
+</section>
+
+<section id="quarters">
+  
+
+
+
+<div class="flex-row" style="align-items: baseline;">
+  <h2>
+    Quarterly Results
+    <small class="sub">
+      
+      Consolidated Figures in Rs. Crores
+      /
+      <a href="https://www.screener.in/company/TCS/#quarters" class="">
+        View Standalone
+      </a>
+      
+    </small>
+  </h2>
+
+  <div class="flex-filler"></div>
+
+  <div>
+    
+      <button
+          data-segment-button-close
+          onclick="Segment.closeSegments('quarters')"
+          class="no-style no-border border-radius bg-blue-100 blue-500 padding-5-7 no-margin hidden">
+        Close Segments
+      </button>
+
+      
+      <button
+          data-segment-button="1"
+          onclick="Segment.showSegment('quarters', '1')"
+          class="no-style no-border border-radius bg-blue-100 blue-500 padding-5-7 no-margin">
+          Product Segments
+      </button>
+      
+    
+  </div>
+</div>
+
+
+<div class="responsive-holder hidden" data-segment-table>
+</div>
+
+
+<div class="responsive-holder" data-result-table>
+  <table class="data-table responsive-text-nowrap">
+    <thead>
+      <tr>
+        <th class="text"></th>
+        
+        <th>Mar 2017</th>
+        
+        <th>Jun 2017</th>
+        
+        <th>Sep 2017</th>
+        
+        <th>Dec 2017</th>
+        
+        <th>Mar 2018</th>
+        
+        <th>Jun 2018</th>
+        
+        <th>Sep 2018</th>
+        
+        <th>Dec 2018</th>
+        
+        <th>Mar 2019</th>
+        
+        <th>Jun 2019</th>
+        
+        <th>Sep 2019</th>
+        
+        <th>Dec 2019</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Sales', 'quarters', this)">
+            Sales&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>29,642</td>
+        
+        <td>29,584</td>
+        
+        <td>30,541</td>
+        
+        <td>30,904</td>
+        
+        <td>32,075</td>
+        
+        <td>34,261</td>
+        
+        <td>36,854</td>
+        
+        <td>37,338</td>
+        
+        <td>38,010</td>
+        
+        <td>38,172</td>
+        
+        <td>38,977</td>
+        
+        <td>39,854</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Expenses', 'quarters', this)">
+            Expenses&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>21,510</td>
+        
+        <td>22,171</td>
+        
+        <td>22,377</td>
+        
+        <td>22,617</td>
+        
+        <td>23,423</td>
+        
+        <td>25,190</td>
+        
+        <td>26,576</td>
+        
+        <td>27,255</td>
+        
+        <td>27,936</td>
+        
+        <td>28,135</td>
+        
+        <td>28,752</td>
+        
+        <td>28,983</td>
+        
+      </tr>
+      
+      <tr class="stripe strong">
+        <td class="text">
+          
+          Operating Profit
+          
+        </td>
+        
+        <td>8,132</td>
+        
+        <td>7,413</td>
+        
+        <td>8,164</td>
+        
+        <td>8,287</td>
+        
+        <td>8,652</td>
+        
+        <td>9,071</td>
+        
+        <td>10,278</td>
+        
+        <td>10,083</td>
+        
+        <td>10,074</td>
+        
+        <td>10,037</td>
+        
+        <td>10,225</td>
+        
+        <td>10,871</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          OPM %
+          
+        </td>
+        
+        <td>27%</td>
+        
+        <td>25%</td>
+        
+        <td>27%</td>
+        
+        <td>27%</td>
+        
+        <td>27%</td>
+        
+        <td>26%</td>
+        
+        <td>28%</td>
+        
+        <td>27%</td>
+        
+        <td>26%</td>
+        
+        <td>26%</td>
+        
+        <td>26%</td>
+        
+        <td>27%</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Other Income
+          
+        </td>
+        
+        <td>997</td>
+        
+        <td>959</td>
+        
+        <td>819</td>
+        
+        <td>870</td>
+        
+        <td>994</td>
+        
+        <td>1,225</td>
+        
+        <td>730</td>
+        
+        <td>1,163</td>
+        
+        <td>1,193</td>
+        
+        <td>1,675</td>
+        
+        <td>1,361</td>
+        
+        <td>818</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Interest
+          
+        </td>
+        
+        <td>8</td>
+        
+        <td>27</td>
+        
+        <td>7</td>
+        
+        <td>6</td>
+        
+        <td>12</td>
+        
+        <td>17</td>
+        
+        <td>137</td>
+        
+        <td>16</td>
+        
+        <td>28</td>
+        
+        <td>257</td>
+        
+        <td>193</td>
+        
+        <td>223</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Depreciation
+          
+        </td>
+        
+        <td>505</td>
+        
+        <td>499</td>
+        
+        <td>504</td>
+        
+        <td>506</td>
+        
+        <td>505</td>
+        
+        <td>493</td>
+        
+        <td>507</td>
+        
+        <td>519</td>
+        
+        <td>537</td>
+        
+        <td>817</td>
+        
+        <td>864</td>
+        
+        <td>897</td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Profit before tax
+          
+        </td>
+        
+        <td>8,616</td>
+        
+        <td>7,846</td>
+        
+        <td>8,472</td>
+        
+        <td>8,645</td>
+        
+        <td>9,129</td>
+        
+        <td>9,786</td>
+        
+        <td>10,364</td>
+        
+        <td>10,711</td>
+        
+        <td>10,702</td>
+        
+        <td>10,638</td>
+        
+        <td>10,529</td>
+        
+        <td>10,569</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Tax %
+          
+        </td>
+        
+        <td>23%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>25%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>23%</td>
+        
+        <td>23%</td>
+        
+        <td>23%</td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Net Profit
+          
+        </td>
+        
+        <td>6,608</td>
+        
+        <td>5,945</td>
+        
+        <td>6,446</td>
+        
+        <td>6,531</td>
+        
+        <td>6,904</td>
+        
+        <td>7,340</td>
+        
+        <td>7,901</td>
+        
+        <td>8,105</td>
+        
+        <td>8,126</td>
+        
+        <td>8,131</td>
+        
+        <td>8,042</td>
+        
+        <td>8,118</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          EPS in Rs
+          
+        </td>
+        
+        <td>16.76</td>
+        
+        <td>15.20</td>
+        
+        <td>16.83</td>
+        
+        <td>17.06</td>
+        
+        <td>18.03</td>
+        
+        <td>19.17</td>
+        
+        <td>20.66</td>
+        
+        <td>21.60</td>
+        
+        <td>21.65</td>
+        
+        <td>21.67</td>
+        
+        <td>21.43</td>
+        
+        <td>21.63</td>
+        
+      </tr>
+      
+
+      
+      <tr>
+        <td class="text"></td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201703/con/"
+              data-open-in-modal="true"
+              data-title="Notes for March 31, 2017"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201706/con/"
+              data-open-in-modal="true"
+              data-title="Notes for June 30, 2017"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201709/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Sept. 30, 2017"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201712/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Dec. 31, 2017"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201803/con/"
+              data-open-in-modal="true"
+              data-title="Notes for March 31, 2018"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201806/con/"
+              data-open-in-modal="true"
+              data-title="Notes for June 30, 2018"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201809/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Sept. 30, 2018"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201812/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Dec. 31, 2018"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201903/con/"
+              data-open-in-modal="true"
+              data-title="Notes for March 31, 2019"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201906/con/"
+              data-open-in-modal="true"
+              data-title="Notes for June 30, 2019"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201909/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Sept. 30, 2019"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+        <td>
+          <a href="https://www.screener.in/company/notes/3365/201912/con/"
+              data-open-in-modal="true"
+              data-title="Notes for Dec. 31, 2019"
+              data-tooltip="Notes to Accounts"
+              class="grey-600"
+              aria-label="Quarter Notes">
+              Notes
+          </a>
+        </td>
+        
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+<section id="profit-loss">
+  
+
+
+
+<div class="flex-row" style="align-items: baseline;">
+  <h2>
+    Profit & Loss
+    <small class="sub">
+      
+      Consolidated Figures in Rs. Crores
+      /
+      <a href="https://www.screener.in/company/TCS/#profit-loss" class="">
+        View Standalone
+      </a>
+      
+    </small>
+  </h2>
+
+  <div class="flex-filler"></div>
+
+  <div>
+    
+      <button
+          data-segment-button-close
+          onclick="Segment.closeSegments('profit-loss')"
+          class="no-style no-border border-radius bg-blue-100 blue-500 padding-5-7 no-margin hidden">
+        Close Segments
+      </button>
+
+      
+      <button
+          data-segment-button="1"
+          onclick="Segment.showSegment('profit-loss', '1')"
+          class="no-style no-border border-radius bg-blue-100 blue-500 padding-5-7 no-margin">
+          Product Segments
+      </button>
+      
+    
+  </div>
+</div>
+
+
+<div class="responsive-holder hidden" data-segment-table>
+</div>
+
+
+<div class="responsive-holder" data-result-table>
+  <table class="data-table responsive-text-nowrap">
+    <thead>
+      <tr>
+        <th class="text"></th>
+        
+        <th>Mar 2008</th>
+        
+        <th>Mar 2009</th>
+        
+        <th>Mar 2010</th>
+        
+        <th>Mar 2011</th>
+        
+        <th>Mar 2012</th>
+        
+        <th>Mar 2013</th>
+        
+        <th>Mar 2014</th>
+        
+        <th>Mar 2015</th>
+        
+        <th>Mar 2016</th>
+        
+        <th>Mar 2017</th>
+        
+        <th>Mar 2018</th>
+        
+        <th>Mar 2019</th>
+        
+        <th>TTM</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Sales', 'profit-loss', this)">
+            Sales&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>22,620</td>
+        
+        <td>27,813</td>
+        
+        <td>30,029</td>
+        
+        <td>37,325</td>
+        
+        <td>48,894</td>
+        
+        <td>62,989</td>
+        
+        <td>81,809</td>
+        
+        <td>94,648</td>
+        
+        <td>108,646</td>
+        
+        <td>117,966</td>
+        
+        <td>123,104</td>
+        
+        <td>146,463</td>
+        
+        <td>155,013</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Expenses', 'profit-loss', this)">
+            Expenses&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>16,910</td>
+        
+        <td>21,424</td>
+        
+        <td>21,334</td>
+        
+        <td>26,146</td>
+        
+        <td>34,459</td>
+        
+        <td>44,950</td>
+        
+        <td>56,657</td>
+        
+        <td>70,167</td>
+        
+        <td>77,969</td>
+        
+        <td>85,655</td>
+        
+        <td>90,588</td>
+        
+        <td>106,957</td>
+        
+        <td>113,806</td>
+        
+      </tr>
+      
+      <tr class="stripe strong">
+        <td class="text">
+          
+          Operating Profit
+          
+        </td>
+        
+        <td>5,710</td>
+        
+        <td>6,388</td>
+        
+        <td>8,695</td>
+        
+        <td>11,178</td>
+        
+        <td>14,435</td>
+        
+        <td>18,040</td>
+        
+        <td>25,153</td>
+        
+        <td>24,482</td>
+        
+        <td>30,677</td>
+        
+        <td>32,311</td>
+        
+        <td>32,516</td>
+        
+        <td>39,506</td>
+        
+        <td>41,207</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          OPM %
+          
+        </td>
+        
+        <td>25%</td>
+        
+        <td>23%</td>
+        
+        <td>29%</td>
+        
+        <td>30%</td>
+        
+        <td>30%</td>
+        
+        <td>29%</td>
+        
+        <td>31%</td>
+        
+        <td>26%</td>
+        
+        <td>28%</td>
+        
+        <td>27%</td>
+        
+        <td>26%</td>
+        
+        <td>27%</td>
+        
+        <td>27%</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Other Income
+          
+        </td>
+        
+        <td>730</td>
+        
+        <td>354</td>
+        
+        <td>272</td>
+        
+        <td>604</td>
+        
+        <td>428</td>
+        
+        <td>1,178</td>
+        
+        <td>1,637</td>
+        
+        <td>3,720</td>
+        
+        <td>3,084</td>
+        
+        <td>4,221</td>
+        
+        <td>3,642</td>
+        
+        <td>4,311</td>
+        
+        <td>5,047</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Interest
+          
+        </td>
+        
+        <td>30</td>
+        
+        <td>29</td>
+        
+        <td>16</td>
+        
+        <td>26</td>
+        
+        <td>22</td>
+        
+        <td>48</td>
+        
+        <td>39</td>
+        
+        <td>104</td>
+        
+        <td>33</td>
+        
+        <td>32</td>
+        
+        <td>52</td>
+        
+        <td>198</td>
+        
+        <td>701</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Depreciation
+          
+        </td>
+        
+        <td>564</td>
+        
+        <td>564</td>
+        
+        <td>661</td>
+        
+        <td>735</td>
+        
+        <td>918</td>
+        
+        <td>1,080</td>
+        
+        <td>1,349</td>
+        
+        <td>1,799</td>
+        
+        <td>1,888</td>
+        
+        <td>1,987</td>
+        
+        <td>2,014</td>
+        
+        <td>2,056</td>
+        
+        <td>3,115</td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Profit before tax
+          
+        </td>
+        
+        <td>5,846</td>
+        
+        <td>6,150</td>
+        
+        <td>8,290</td>
+        
+        <td>11,021</td>
+        
+        <td>13,923</td>
+        
+        <td>18,090</td>
+        
+        <td>25,402</td>
+        
+        <td>26,298</td>
+        
+        <td>31,840</td>
+        
+        <td>34,513</td>
+        
+        <td>34,092</td>
+        
+        <td>41,563</td>
+        
+        <td>42,438</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Tax %
+          
+        </td>
+        
+        <td>13%</td>
+        
+        <td>14%</td>
+        
+        <td>14%</td>
+        
+        <td>17%</td>
+        
+        <td>24%</td>
+        
+        <td>22%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td>24%</td>
+        
+        <td></td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Net Profit
+          
+        </td>
+        
+        <td>5,026</td>
+        
+        <td>5,256</td>
+        
+        <td>7,001</td>
+        
+        <td>9,068</td>
+        
+        <td>10,413</td>
+        
+        <td>13,917</td>
+        
+        <td>19,164</td>
+        
+        <td>19,852</td>
+        
+        <td>24,270</td>
+        
+        <td>26,289</td>
+        
+        <td>25,826</td>
+        
+        <td>31,472</td>
+        
+        <td>32,417</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          EPS in Rs
+          
+        </td>
+        
+        <td>12.24</td>
+        
+        <td>12.81</td>
+        
+        <td>16.15</td>
+        
+        <td>21.97</td>
+        
+        <td>24.49</td>
+        
+        <td>33.65</td>
+        
+        <td>46.81</td>
+        
+        <td>43.95</td>
+        
+        <td>57.82</td>
+        
+        <td>62.19</td>
+        
+        <td>67.60</td>
+        
+        <td>83.93</td>
+        
+        <td>86.38</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Dividend Payout %
+          
+        </td>
+        
+        <td>27%</td>
+        
+        <td>26%</td>
+        
+        <td>56%</td>
+        
+        <td>30%</td>
+        
+        <td>47%</td>
+        
+        <td>31%</td>
+        
+        <td>33%</td>
+        
+        <td>78%</td>
+        
+        <td>35%</td>
+        
+        <td>35%</td>
+        
+        <td>37%</td>
+        
+        <td>36%</td>
+        
+      </tr>
+      
+
+      
+    </tbody>
+  </table>
+</div>
+
+  <div class="sub">
+    * Sales is net of excise duty and discounts
+  </div>
+  <div class="row">
+    <table class="three columns ranges-table">
+      <tr><th colspan="2">Compounded Sales Growth</th></tr>
+      <tr><td>10 Years:</td><td>18.07%</td></tr>
+      <tr><td>5 Years:</td><td>12.35%</td></tr>
+      <tr><td>3 Years:</td><td>10.47%</td></tr>
+      <tr><td>TTM:</td><td>10.31%</td></tr>
+    </table>
+    <table class="three columns ranges-table">
+      <tr><th colspan="2">Compounded Profit Growth</th></tr>
+      <tr><td>10 Years:</td><td>19.68%</td></tr>
+      <tr><td>5 Years:</td><td>10.55%</td></tr>
+      <tr><td>3 Years:</td><td>9.52%</td></tr>
+      <tr><td>TTM:</td><td>7.16%</td></tr>
+    </table>
+    <table class="three columns ranges-table">
+      <tr><th colspan="2">Stock Price CAGR</th></tr>
+      <tr><td>10 Years:</td><td>19.26%</td></tr>
+      <tr><td>5 Years:</td><td>10.63%</td></tr>
+      <tr><td>3 Years:</td><td>21.96%</td></tr>
+      <tr><td>1 Year:</td><td>7.61%</td></tr>
+    </table>
+    <table class="three columns ranges-table">
+      <tr><th colspan="2">Return on Equity</th></tr>
+      <tr><td>10 Years:</td><td>36.71%</td></tr>
+      <tr><td>5 Years:</td><td>34.92%</td></tr>
+      <tr><td>3 Years:</td><td>33.13%</td></tr>
+      <tr><td>Last Year:</td><td>35.98%</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="balance-sheet">
+  
+
+
+
+<div class="flex-row" style="align-items: baseline;">
+  <h2>
+    Balance Sheet
+    <small class="sub">
+      
+      Consolidated Figures in Rs. Crores
+      /
+      <a href="https://www.screener.in/company/TCS/#balance-sheet" class="">
+        View Standalone
+      </a>
+      
+    </small>
+  </h2>
+
+  <div class="flex-filler"></div>
+
+  <div>
+    
+  </div>
+</div>
+
+
+
+<div class="responsive-holder" data-result-table>
+  <table class="data-table responsive-text-nowrap">
+    <thead>
+      <tr>
+        <th class="text"></th>
+        
+        <th>Mar 2008</th>
+        
+        <th>Mar 2009</th>
+        
+        <th>Mar 2010</th>
+        
+        <th>Mar 2011</th>
+        
+        <th>Mar 2012</th>
+        
+        <th>Mar 2013</th>
+        
+        <th>Mar 2014</th>
+        
+        <th>Mar 2015</th>
+        
+        <th>Mar 2016</th>
+        
+        <th>Mar 2017</th>
+        
+        <th>Mar 2018</th>
+        
+        <th>Mar 2019</th>
+        
+        <th>Sep 2019</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Share Capital', 'balance-sheet', this)">
+            Share Capital&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>198</td>
+        
+        <td>198</td>
+        
+        <td>296</td>
+        
+        <td>296</td>
+        
+        <td>296</td>
+        
+        <td>296</td>
+        
+        <td>196</td>
+        
+        <td>196</td>
+        
+        <td>197</td>
+        
+        <td>197</td>
+        
+        <td>191</td>
+        
+        <td>375</td>
+        
+        <td>375</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Reserves
+          
+        </td>
+        
+        <td>12,102</td>
+        
+        <td>15,502</td>
+        
+        <td>18,171</td>
+        
+        <td>24,209</td>
+        
+        <td>29,284</td>
+        
+        <td>38,350</td>
+        
+        <td>48,999</td>
+        
+        <td>50,439</td>
+        
+        <td>70,875</td>
+        
+        <td>86,017</td>
+        
+        <td>84,937</td>
+        
+        <td>89,071</td>
+        
+        <td>94,657</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Borrowings
+          
+        </td>
+        
+        <td>455</td>
+        
+        <td>564</td>
+        
+        <td>103</td>
+        
+        <td>75</td>
+        
+        <td>127</td>
+        
+        <td>232</td>
+        
+        <td>297</td>
+        
+        <td>358</td>
+        
+        <td>245</td>
+        
+        <td>289</td>
+        
+        <td>247</td>
+        
+        <td>62</td>
+        
+        <td>6,784</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Other Liabilities', 'balance-sheet', this)">
+            Other Liabilities&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>4,928</td>
+        
+        <td>6,473</td>
+        
+        <td>8,924</td>
+        
+        <td>8,201</td>
+        
+        <td>11,725</td>
+        
+        <td>13,390</td>
+        
+        <td>17,646</td>
+        
+        <td>22,668</td>
+        
+        <td>17,814</td>
+        
+        <td>17,056</td>
+        
+        <td>20,922</td>
+        
+        <td>25,596</td>
+        
+        <td>25,519</td>
+        
+      </tr>
+      
+      <tr class="stripe strong">
+        <td class="text">
+          
+          Total Liabilities
+          
+        </td>
+        
+        <td>17,583</td>
+        
+        <td>22,637</td>
+        
+        <td>27,394</td>
+        
+        <td>32,681</td>
+        
+        <td>41,330</td>
+        
+        <td>52,168</td>
+        
+        <td>67,138</td>
+        
+        <td>73,661</td>
+        
+        <td>89,131</td>
+        
+        <td>103,559</td>
+        
+        <td>106,297</td>
+        
+        <td>115,104</td>
+        
+        <td>127,335</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Fixed Assets', 'balance-sheet', this)">
+            Fixed Assets&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>3,935</td>
+        
+        <td>6,746</td>
+        
+        <td>6,738</td>
+        
+        <td>7,479</td>
+        
+        <td>8,662</td>
+        
+        <td>9,828</td>
+        
+        <td>9,544</td>
+        
+        <td>11,638</td>
+        
+        <td>11,774</td>
+        
+        <td>11,701</td>
+        
+        <td>11,973</td>
+        
+        <td>12,290</td>
+        
+        <td>18,606</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          CWIP
+          
+        </td>
+        
+        <td>907</td>
+        
+        <td>705</td>
+        
+        <td>1,017</td>
+        
+        <td>1,194</td>
+        
+        <td>1,446</td>
+        
+        <td>1,895</td>
+        
+        <td>3,168</td>
+        
+        <td>2,766</td>
+        
+        <td>1,670</td>
+        
+        <td>1,541</td>
+        
+        <td>1,278</td>
+        
+        <td>963</td>
+        
+        <td>1,057</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Investments
+          
+        </td>
+        
+        <td>2,606</td>
+        
+        <td>1,614</td>
+        
+        <td>3,682</td>
+        
+        <td>1,763</td>
+        
+        <td>1,350</td>
+        
+        <td>1,897</td>
+        
+        <td>3,434</td>
+        
+        <td>1,662</td>
+        
+        <td>22,822</td>
+        
+        <td>41,980</td>
+        
+        <td>36,008</td>
+        
+        <td>29,330</td>
+        
+        <td>30,639</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Other Assets', 'balance-sheet', this)">
+            Other Assets&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>10,135</td>
+        
+        <td>13,572</td>
+        
+        <td>15,957</td>
+        
+        <td>22,245</td>
+        
+        <td>29,872</td>
+        
+        <td>38,547</td>
+        
+        <td>50,991</td>
+        
+        <td>57,595</td>
+        
+        <td>52,865</td>
+        
+        <td>48,337</td>
+        
+        <td>57,038</td>
+        
+        <td>72,521</td>
+        
+        <td>77,033</td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Total Assets
+          
+        </td>
+        
+        <td>17,583</td>
+        
+        <td>22,637</td>
+        
+        <td>27,394</td>
+        
+        <td>32,681</td>
+        
+        <td>41,330</td>
+        
+        <td>52,168</td>
+        
+        <td>67,138</td>
+        
+        <td>73,661</td>
+        
+        <td>89,131</td>
+        
+        <td>103,559</td>
+        
+        <td>106,297</td>
+        
+        <td>115,104</td>
+        
+        <td>127,335</td>
+        
+      </tr>
+      
+
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+<section id="cash-flow">
+  
+
+
+
+<div class="flex-row" style="align-items: baseline;">
+  <h2>
+    Cash Flows
+    <small class="sub">
+      
+      Consolidated Figures in Rs. Crores
+      /
+      <a href="https://www.screener.in/company/TCS/#cash-flow" class="">
+        View Standalone
+      </a>
+      
+    </small>
+  </h2>
+
+  <div class="flex-filler"></div>
+
+  <div>
+    
+  </div>
+</div>
+
+
+
+<div class="responsive-holder" data-result-table>
+  <table class="data-table responsive-text-nowrap">
+    <thead>
+      <tr>
+        <th class="text"></th>
+        
+        <th>Mar 2008</th>
+        
+        <th>Mar 2009</th>
+        
+        <th>Mar 2010</th>
+        
+        <th>Mar 2011</th>
+        
+        <th>Mar 2012</th>
+        
+        <th>Mar 2013</th>
+        
+        <th>Mar 2014</th>
+        
+        <th>Mar 2015</th>
+        
+        <th>Mar 2016</th>
+        
+        <th>Mar 2017</th>
+        
+        <th>Mar 2018</th>
+        
+        <th>Mar 2019</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Cash from Operating Activity', 'cash-flow', this)">
+            Cash from Operating Activity&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>3,881</td>
+        
+        <td>5,498</td>
+        
+        <td>7,359</td>
+        
+        <td>6,614</td>
+        
+        <td>7,127</td>
+        
+        <td>11,615</td>
+        
+        <td>14,751</td>
+        
+        <td>19,369</td>
+        
+        <td>19,109</td>
+        
+        <td>25,223</td>
+        
+        <td>25,067</td>
+        
+        <td>28,593</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Cash from Investing Activity', 'cash-flow', this)">
+            Cash from Investing Activity&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>-2,363</td>
+        
+        <td>-3,435</td>
+        
+        <td>-5,413</td>
+        
+        <td>-1,431</td>
+        
+        <td>-2,727</td>
+        
+        <td>-6,038</td>
+        
+        <td>-9,452</td>
+        
+        <td>-1,807</td>
+        
+        <td>-5,010</td>
+        
+        <td>-16,895</td>
+        
+        <td>3,104</td>
+        
+        <td>1,645</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          <button
+              class="no-style no-border no-margin no-padding no-bg hover-link"
+              style="font-weight: inherit; text-align: left;"
+              onclick="Company.showSchedule('Cash from Financing Activity', 'cash-flow', this)">
+            Cash from Financing Activity&nbsp;<span class="blue-500">+</span>
+          </button>
+          
+        </td>
+        
+        <td>-1,442</td>
+        
+        <td>-1,672</td>
+        
+        <td>-2,381</td>
+        
+        <td>-4,659</td>
+        
+        <td>-3,955</td>
+        
+        <td>-5,729</td>
+        
+        <td>-5,673</td>
+        
+        <td>-17,168</td>
+        
+        <td>-9,666</td>
+        
+        <td>-11,026</td>
+        
+        <td>-26,885</td>
+        
+        <td>-27,897</td>
+        
+      </tr>
+      
+      <tr class=" strong">
+        <td class="text">
+          
+          Net Cash Flow
+          
+        </td>
+        
+        <td>76</td>
+        
+        <td>392</td>
+        
+        <td>-435</td>
+        
+        <td>524</td>
+        
+        <td>445</td>
+        
+        <td>-152</td>
+        
+        <td>-374</td>
+        
+        <td>394</td>
+        
+        <td>4,433</td>
+        
+        <td>-2,698</td>
+        
+        <td>1,286</td>
+        
+        <td>2,341</td>
+        
+      </tr>
+      
+
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+<section id="ratios">
+  
+
+
+
+<div class="flex-row" style="align-items: baseline;">
+  <h2>
+    Ratios
+    <small class="sub">
+      
+      Consolidated Figures in Rs. Crores
+      /
+      <a href="https://www.screener.in/company/TCS/#ratios" class="">
+        View Standalone
+      </a>
+      
+    </small>
+  </h2>
+
+  <div class="flex-filler"></div>
+
+  <div>
+    
+  </div>
+</div>
+
+
+
+<div class="responsive-holder" data-result-table>
+  <table class="data-table responsive-text-nowrap">
+    <thead>
+      <tr>
+        <th class="text"></th>
+        
+        <th>Mar 2008</th>
+        
+        <th>Mar 2009</th>
+        
+        <th>Mar 2010</th>
+        
+        <th>Mar 2011</th>
+        
+        <th>Mar 2012</th>
+        
+        <th>Mar 2013</th>
+        
+        <th>Mar 2014</th>
+        
+        <th>Mar 2015</th>
+        
+        <th>Mar 2016</th>
+        
+        <th>Mar 2017</th>
+        
+        <th>Mar 2018</th>
+        
+        <th>Mar 2019</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          ROCE %
+          
+        </td>
+        
+        <td>53%</td>
+        
+        <td>42%</td>
+        
+        <td>47%</td>
+        
+        <td>51%</td>
+        
+        <td>51%</td>
+        
+        <td>53%</td>
+        
+        <td>57%</td>
+        
+        <td>51%</td>
+        
+        <td>51%</td>
+        
+        <td>44%</td>
+        
+        <td>39%</td>
+        
+        <td>48%</td>
+        
+      </tr>
+      
+      <tr class="">
+        <td class="text">
+          
+          Debtor Days
+          
+        </td>
+        
+        <td>87</td>
+        
+        <td>80</td>
+        
+        <td>71</td>
+        
+        <td>80</td>
+        
+        <td>86</td>
+        
+        <td>82</td>
+        
+        <td>81</td>
+        
+        <td>79</td>
+        
+        <td>81</td>
+        
+        <td>70</td>
+        
+        <td>74</td>
+        
+        <td>68</td>
+        
+      </tr>
+      
+      <tr class="stripe">
+        <td class="text">
+          
+          Inventory Turnover
+          
+        </td>
+        
+        <td>538.37</td>
+        
+        <td>703.86</td>
+        
+        <td>1,104.21</td>
+        
+        <td>1,838.19</td>
+        
+        <td>2,409.16</td>
+        
+        <td>3,236.87</td>
+        
+        <td>4,499.96</td>
+        
+        <td>6,051.69</td>
+        
+        <td>6,775.55</td>
+        
+        <td>6,376.54</td>
+        
+        <td>5,238.47</td>
+        
+        <td>8,136.83</td>
+        
+      </tr>
+      
+
+      
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+
+<section id="documents">
+  <div class="row">
+    <div class="six columns">
+      
+      
+<h3>Recent Announcements</h3>
+<ul class="items">
+
+  <li>
+    <a href="http://www.bseindia.com/xml-data/corpfiling/AttachLive/a30c9c45-6160-4910-9d42-00a6c0a38a57.pdf" target="_blank" rel="noopener noreferrer">
+      Announcement under Regulation 30 (LODR)-Press Release / Media Release
+    </a>
+    <span class="sub"></span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/xml-data/corpfiling/AttachLive/d1aeffcc-573c-4200-8e80-ec7abd47b0fd.pdf" target="_blank" rel="noopener noreferrer">
+      Announcement under Regulation 30 (LODR)-Press Release / Media Release
+    </a>
+    <span class="sub"></span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/xml-data/corpfiling/AttachLive/9c214272-e194-4790-ae47-e9f487efc8f8.pdf" target="_blank" rel="noopener noreferrer">
+      Compliances-Reg. 39 (3) - Details of Loss of Certificate / Duplicate Certificate
+    </a>
+    <span class="sub"></span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/xml-data/corpfiling/AttachLive/a250a0fb-471a-4942-b701-f34ff0f440bc.pdf" target="_blank" rel="noopener noreferrer">
+      Disclosure Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015 - Chief Financial Officer
+    </a>
+    <span class="sub"></span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/xml-data/corpfiling/AttachLive/f9458a2e-ff68-4206-8204-acd6c63e95e0.pdf" target="_blank" rel="noopener noreferrer">
+      Announcement under Regulation 30 (LODR)-Press Release / Media Release
+    </a>
+    <span class="sub"></span>
+  </li>
+
+</ul>
+
+
+      <a href="https://www.bseindia.com/corporates/ann.html?scrip=532540" class="button" target="_blank" rel="noopener noreferrer">
+        <i class="icon-right-open"></i>
+        View all announcements
+      </a>
+      
+    </div>
+
+    <div class="three columns">
+      
+<h3>Annual Reports</h3>
+<ul class="items">
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400319.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2019
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400318.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2018
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400317.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2017
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400316.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2016
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400315.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2015
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400314.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2014
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400313.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2013
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="https://archives.nseindia.com/annual_reports/AR_49_TCS_2012_2013_30052013104153.zip" target="_blank" rel="noopener noreferrer">
+      Financial Year 2013
+    </a>
+    <span class="sub">from nse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400312.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2012
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400311.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2011
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="https://archives.nseindia.com/annual_reports/AR_TCS_2010_2011_16062011102522.zip" target="_blank" rel="noopener noreferrer">
+      Financial Year 2011
+    </a>
+    <span class="sub">from nse</span>
+  </li>
+
+  <li>
+    <a href="http://www.bseindia.com/bseplus/annualreport/532540/5325400310.pdf" target="_blank" rel="noopener noreferrer">
+      Financial Year 2010
+    </a>
+    <span class="sub">from bse</span>
+  </li>
+
+  <li>
+    <a href="https://archives.nseindia.com/annual_reports/AR_TCS_2009_2010_18082010121500.zip" target="_blank" rel="noopener noreferrer">
+      Financial Year 2010
+    </a>
+    <span class="sub">from nse</span>
+  </li>
+
+</ul>
+
+
+    </div>
+
+    <div class="three columns">
+      
+<h3>Credit Ratings</h3>
+<ul class="items">
+
+  <li>
+    <a href="https://www.icra.in/Rationale/ShowRationaleReport/?Id=78651" target="_blank" rel="noopener noreferrer">
+      Tata Consultancy Services Limited: Ratings reaffirmed; rated amount enhanced
+    </a>
+    <span class="sub">icra</span>
+  </li>
+
+  <li>
+    <a href="https://www.icra.in/Rationale/ShowRationaleReport/?Id=65851" target="_blank" rel="noopener noreferrer">
+      Tata Consultancy Services Limited: Ratings Reaffirmed; rated amount enhanced
+    </a>
+    <span class="sub">icra</span>
+  </li>
+
+  <li>
+    <a href="https://www.icra.in/Rationale/ShowRationaleReport/?Id=38315" target="_blank" rel="noopener noreferrer">
+      Update note  on Tata Consultancy Services Limited
+    </a>
+    <span class="sub">icra</span>
+  </li>
+
+  <li>
+    <a href="https://www.icra.in/Rationale/ShowRationaleReport/?Id=31918" target="_blank" rel="noopener noreferrer">
+      ICRA reaffirms ratings of [ICRA]AAA(stable) and [ICRA]A1+ for bank facilities of Tata Consultancy Services Limited rated amount enhanced
+    </a>
+    <span class="sub">icra</span>
+  </li>
+
+  <li>
+    <a href="https://www.icra.in/Rationale/ShowRationaleReport/?Id=23202" target="_blank" rel="noopener noreferrer">
+      Ratings of [ICRA]AAA(stable) and [ICRA]A1+ reaffirmed for the bank facilities of Tata Consultancy Services Limited rated amount enhanced
+    </a>
+    <span class="sub">icra</span>
+  </li>
+
+</ul>
+
+
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  </main>
+  
+
+
+  {% endblock %}

@@ -9,6 +9,9 @@
 * https://github.com/iiSeymour/flasked-vincent
 * https://github.com/lemoncyb/flasked-altair
 
+### sqlite
+* https://likegeeks.com/python-sqlite3-tutorial/
+
 ### stock price module
 * fundamental data - https://pypi.org/project/yahoo-fin/
 * stock price data - alphavantage

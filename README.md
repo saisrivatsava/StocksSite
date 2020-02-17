@@ -2,6 +2,9 @@
 
 
 ## Resource links
+### flask structure
+* https://lepture.com/en/2018/structure-of-a-flask-project
+
 ### flask + matplotlib
 * https://gist.github.com/illume/1f19a2cf9f26425b1761b63d9506331f
 

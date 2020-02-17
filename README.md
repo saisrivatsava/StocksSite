@@ -8,3 +8,12 @@
 ### flask + altair (visualization) 
 * https://github.com/iiSeymour/flasked-vincent
 * https://github.com/lemoncyb/flasked-altair
+
+### stock price module
+* fundamental data - https://pypi.org/project/yahoo-fin/
+* stock price data - alphavantage
+* technical indicators - alphavantage
+
+
+### price prediction
+* https://www.thepythoncode.com/article/stock-price-prediction-in-python-using-tensorflow-2-and-keras

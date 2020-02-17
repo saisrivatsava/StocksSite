@@ -9,6 +9,9 @@
 * https://github.com/iiSeymour/flasked-vincent
 * https://github.com/lemoncyb/flasked-altair
 
+### flask admin app
+* https://github.com/app-generator/flask-dashboard-atlantis.git
+
 ### sqlite
 * https://likegeeks.com/python-sqlite3-tutorial/
 

@@ -34,3 +34,6 @@
 
 ### ffn - github example
 * https://github.com/Poseyy/MarketAnalysis/blob/master/strategies/quant.ipynb
+
+### LSTM- Stock price
+* https://towardsdatascience.com/getting-rich-quick-with-machine-learning-and-stock-market-predictions-696802da94fe

@@ -30,4 +30,7 @@
 * https://www.thepythoncode.com/article/stock-price-prediction-in-python-using-tensorflow-2-and-keras
 
 ### stocks github url
-https://github.com/topics/stock-market?o=desc&s=updated&utf8=%E2%9C%93
+* https://github.com/topics/stock-market?o=desc&s=updated&utf8=%E2%9C%93
+
+### ffn - github example
+* https://github.com/Poseyy/MarketAnalysis/blob/master/strategies/quant.ipynb

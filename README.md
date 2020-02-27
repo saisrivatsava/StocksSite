@@ -37,3 +37,4 @@
 
 ### LSTM- Stock price
 * https://towardsdatascience.com/getting-rich-quick-with-machine-learning-and-stock-market-predictions-696802da94fe
+* https://towardsdatascience.com/using-lstms-to-predict-stock-prices-a9965dfec2c9
